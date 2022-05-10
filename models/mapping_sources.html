@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>iSamples – namespaces</title>
+<title>iSamples - Mapping Source Records</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <h1 class="quarto-secondary-nav-title">Mapping Source Records</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -156,73 +156,116 @@ ul.task-list{list-style: none;}
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Mapping Source Records</h1>
+<p class="subtitle lead">Mapping source sample records to the iSamples core model</p>
+</div>
 
 
-<section id="namespaces-defined-by-isamples" class="level1">
-<h1>Namespaces defined by iSamples</h1>
-<p>Namespaces are used to uniquely address resources offered by the project.</p>
-<p>In order to support introspection, all namespace IRIs are to be resolvable. Resolution involves three variables: the IRI, the requested content type, and an optional profile.</p>
-<p>The IRI provides the location of the resource. Reference to specific items within a resource can be made in two ways: by path (e.g.&nbsp;<code>/resource/element</code>) and by fragment (e.g.&nbsp;<code>resource#element</code>). IRI fragments are not transmitted to a server by a client, hence a fragment identifier is always relative to the retrieved document. The basic rule is thus, the path element reference is used to reference a specific document, then a fragment is used to reference a specific component of the document.</p>
-<p>The requested content type is presented by a client in the Accept header. If no Accept header is presented by the client or the Accept header is ambiguous (e.g.&nbsp;<code>*/*</code>), then the default content type is returned. If a specific content type can not be matched, then a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406">406 Not Acceptable</a> status is returned.</p>
-<section id="namespace-base" class="level2">
-<h2 class="anchored" data-anchor-id="namespace-base">Namespace base</h2>
-<dl>
-<dt>IRI</dt>
-<dd>
-<code>https://w3id.org/isamples/</code>
-</dd>
-</dl>
-<p>The namespace base provides the root for project IRIs. The project will utilize the <a href="https://w3id.org/">w3id.org</a> infrastructure to enable abstraction of the advertised location and the physical location of the resource. Such abstraction is especially important early in the project as locations of resources are in flux.</p>
-</section>
-<section id="definitions" class="level2">
-<h2 class="anchored" data-anchor-id="definitions">Definitions</h2>
-<p>The default format for definitions is JSON-LD. Other formats may be requested using the Accept header.</p>
-<dl>
-<dt>IRI</dt>
-<dd>
-<code>iss: &lt;https://w3id.org/isamples/models/&gt;</code>
-</dd>
-</dl>
-<p>Definitions include static content such as vocabularies, ontologies, schemas, and other documents providing machine and human actionable documents describing resources.</p>
-<dl>
-<dt>Vocabularies</dt>
-<dd>
-<code>https://w3id.org/isamples/models/vocab/</code>
-</dd>
-<dt>Specimen Type Vocabulary:</dt>
-<dd>
-<code>https://w3id.org/isamples/models/vocab/specimen_type/</code>
-</dd>
-<dt>Sampled Feature Vocabulary:</dt>
-<dd>
-<code>https://w3id.org/isamples/models/vocab/sampled_feature/</code>
-</dd>
-<dt>Material Type Vocabulary:</dt>
-<dd>
-<code>https://w3id.org/isamples/models/vocab/material_type/</code>
-</dd>
-</dl>
-</section>
-<section id="services" class="level2">
-<h2 class="anchored" data-anchor-id="services">Services</h2>
-<dl>
-<dt>IRI</dt>
-<dd>
-<code>https://w3id.org/isamples/svc/</code>
-</dd>
-</dl>
-<section id="record-access" class="level3">
-<h3 class="anchored" data-anchor-id="record-access">Record access</h3>
-<dl>
-<dt>IRI</dt>
-<dd>
-<code>https://w3id.org/isamples/svc/meta/</code>
-</dd>
-</dl>
 
 
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="mapping-from-sources-to-core" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-from-sources-to-core">Mapping from sources to core</h2>
+<p>In general the process is :</p>
+<p><img src="plantuml-images/bde4aac332c7d4ca65d1e14e564f7ba1a452fc1d.svg"></p>
 </section>
-</section>
+<section id="geome" class="level2">
+<h2 class="anchored" data-anchor-id="geome">GEOME</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>s</th>
+<th>p</th>
+<th>o</th>
+<th>Label</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ARK</td>
+<td>has_record</td>
+<td>_id</td>
+<td>event</td>
+<td>GEOME</td>
+</tr>
+<tr class="even">
+<td>ARK</td>
+<td>has_record</td>
+<td>_id</td>
+<td>sample</td>
+<td>GEOME</td>
+</tr>
+<tr class="odd">
+<td>ARK</td>
+<td>has_record</td>
+<td>_id</td>
+<td>tissue</td>
+<td>GEOME</td>
+</tr>
+<tr class="even">
+<td>IGSN</td>
+<td>has_record</td>
+<td>_id</td>
+<td>sample</td>
+<td>SESAR</td>
+</tr>
+<tr class="odd">
+<td>ARK</td>
+<td>has_record</td>
+<td>_id</td>
+<td>SMITHSONIAN</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>```{figure} assets/geome_mapping.drawio.svg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>align: left</td>
+</tr>
+</tbody>
+</table>
+<p>Source record representation.</p>
+<pre><code>
+```{figure} assets/geome_mapping_1.drawio.svg
+---
+align: left
+---
+Mapping to individual core records and relation records. </code></pre>
+<p>Relations between entities are modelled as triples with subject (s) indicating the source of the relation, the predicate (p) the type of relation, and object (o) identifying the target.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>```{figure} assets/geome_mapping_2.drawio.svg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>align: left</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping to individual core records and including relations in the records. ```</p>
+<p>Relations between entities are modelled as key-value pairs within the record, with key being a field name, and value being a list of identifiers.</p>
+
+
 </section>
 
 </main> <!-- /main -->
